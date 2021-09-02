@@ -171,13 +171,13 @@
         },
         computed: {
             personasFiltradas() {
-                if(!this.nMenorATres() && !this.dMenorATres()){
+                if(!this.nMenorATres() || !this.dMenorATres()){
                     return this.personas.filter((persona) => {
                         let nombreCompleto = `${persona.nombre} ${persona.apellido}`
                         let dni = `${persona.dni}`
-                        return nombreCompleto.toLowerCase().includes(this.criterioDeBusquedaNombre.toLowerCase()) && dni.toLowerCase().includes(this.criterioDeBusquedaDni.toLowerCase())
+                        return nombreCompleto.toLowerCase().includes(this.criterioDeBusquedaNombre.toLowerCase()) || dni.toLowerCase().includes(this.criterioDeBusquedaDni.toLowerCase())
                     });
-                } else{
+                } else{ 
                     return this.personas
                 }
             }
